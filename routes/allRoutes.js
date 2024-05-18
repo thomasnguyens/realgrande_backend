@@ -11,7 +11,7 @@ const upload = multer()
 //RequestHandler to save a house information in houses collection
 router.post("/inserthouse", upload.none(), async (request, response) => {
     const house=request.body;
-    console.log(house);
+    // console.log(house);
     const housedata = new HouseModel(house);
     await housedata.save()
     try {
@@ -59,7 +59,7 @@ router.get("/searchhouse/:id", async (request, response) => {
 //RequestHandler to save a enquiry information about a house
 router.post("/register", upload.none(), async (request, response) => {
     const enquiry=request.body;
-    console.log(enquiry);
+    // console.log(enquiry);
     const enquirydata = new EnquiryModel(enquiry);
     await enquirydata.save()
 
@@ -84,21 +84,21 @@ router.get("/allenquiries", async (request, response) => {
 //RequestHandler to save a user information about in users collection
 router.post("/signup", upload.none(), async (request, response) => {
     let {name, email, password}=request.body;
-    console.log("After:"+name+", "+email+", "+ password);
+    // console.log("After:"+name+", "+email+", "+ password);
     
     await bcrypt
     .genSalt(10)
     .then(salt => {
-      console.log('Salt: ', salt)
+      // console.log('Salt: ', salt)
       return bcrypt.hash(password, salt)
     })
     .then(hash => {
       password=hash;
-      console.log('Hash: ', hash)
+      // console.log('Hash: ', hash)
     })
     .catch(err => console.error(err.message))
 
-    console.log("After:"+name+", "+email+", "+ password);
+    // console.log("After:"+name+", "+email+", "+ password);
     const userdata = new UserModel({name, email, password});
     await userdata.save()
 
