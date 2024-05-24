@@ -11,10 +11,10 @@ dotenv.config()
 //Parse the JSON data
 app.use(express.json())
 
-// let corspolicy = {
-//   origin: process.env.FRONTENDURI
-// }
-// app.use(cors(corspolicy));
+let corspolicy = {
+  origin: process.env.FRONTENDURI
+}
+app.use(cors(corspolicy));
 app.use(cors());
 
 const db = module.exports =async ()=>{
